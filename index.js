@@ -1,12 +1,10 @@
-function isValidParentheses(s) {
-  const stack = [];
-  const map = { "(": ")", "[": "]", "{": "}" };
+function findTheDifference(s, t) {
+  let result = 0;
   for (const char of s) {
-    if (char in map) stack.push(char);
-    else {
-      const top = stack.pop();
-      if (map[top] !== char) return false;
-    }
+    result ^= char.charCodeAt(0);
   }
-  return stack.length === 0;
+  for (const char of t) {
+    result ^= char.charCodeAt(0);
+  }
+  return String.fromCharCode(result);
 }
